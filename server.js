@@ -1,13 +1,8 @@
 //Importando o Express
-const express = require("express");
+import dotenv from "dotenv";
+import app from "./src/app.js";
 
-//Inicialização do express
-const app = express();
-
-//Definição da função que responde a requisição GET na rota hello
-app.get("/hello", (req, res) => {
-    res.send("Hello World");
-});
+dotenv.config();
 
 //Definição de uma constante para a porta TCP
 const PORT = process.env.PORT || 3000;
