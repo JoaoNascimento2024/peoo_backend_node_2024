@@ -1,6 +1,7 @@
 //Importando o Express
 import dotenv from "dotenv";
 import app from "./src/app.js";
+import connection from "./src/infra/connectDB.js";
 
 dotenv.config();
 
