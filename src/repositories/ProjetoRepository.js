@@ -5,7 +5,7 @@ import connection from "../config/dbConnect.js";
 const ProjetoRepository = {
 
     async findAll() {
-        const rows = await connection.query("select * from projeto", []);
+        const rows = await connection.query("select projeto.id, projeto.nome, categoria.nome from projeto inner join categoria on categoria.id = projeto.categoria_id", []);
         return rows.map(row => new Projeto(row.id, row.nome));
     },
 

@@ -6,7 +6,7 @@ const dbConfig = {
     host : "localhost",
     user : process.env.USER_DB || "root",
     password :process.env.PASSWORD_DB || "",
-    database : "task_manager"
+    database : "task_manager2"
 };
 
 //Cria objeto de conexão
