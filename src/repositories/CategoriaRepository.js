@@ -14,6 +14,24 @@ const CategoriaRepository = {
         );
         categoria.id = result.insertId;
         return categoria;
+    },
+
+    async deleteCategoria(id){
+        const result = await connection.query("delete from categoria where id = ?", [id]);
+        if(result.affectedRows > 0){
+            return true;
+        }
+        return false;
+    },
+
+    async updateCategoria(categoria){
+        const result = await connection.query("update categoria set nome = ? where id = ?",
+            [categoria.nome, categoria.id]
+        );
+        if(result.affectedRows > 0){
+            return categoria;
+        }
+        return null;
     }
 }
 

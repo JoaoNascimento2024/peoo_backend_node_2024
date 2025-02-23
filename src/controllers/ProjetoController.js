@@ -12,13 +12,35 @@ const ProjetoController = {
     },
 
     async create(req, res) {
-        const {nome} = req.body;
+        const {nome, categoria} = req.body;
         try {
-            const novoProjeto = {nome};
+            const novoProjeto = {nome, categoria};
             const projetoCriado = await ProjetoRepository.createProject(novoProjeto);
             res.status(201).json(projetoCriado);
         }catch(err){
             res.status(500).json({error : "Erro na criação de projetos", err});
+        }
+    },
+
+    async delete(req, res) {
+        const {id} = req.params;
+        try {
+            const resposta = await ProjetoRepository.deleteProject(id);
+            res.status(200).json(resposta);
+        }catch(err){
+            res.status(500).json({error : "Erro na exclusão de projetos", err});
+        }
+    },
+
+    async update(req, res) {
+        const {id} = req.params;
+        const {nome, categoria} = req.body;
+        const projeto = {id, nome, categoria}
+        try {
+            const resposta = await ProjetoRepository.updateProject(projeto);
+            res.status(200).json(resposta);
+        }catch(err){
+            res.status(500).json({error : "Erro na exclusão de projetos", err});
         }
     }
 
