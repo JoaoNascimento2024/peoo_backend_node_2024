@@ -1,11 +1,12 @@
 import express from "express";
 import ProjetoController from "../controllers/ProjetoController.js";
+import authenticateToken from "../infra/authMiddleware.js";
 
 const ProjetoRouters = express.Router();
 
 ProjetoRouters.get("/", ProjetoController.getAll);
-ProjetoRouters.post("/", ProjetoController.create);
-ProjetoRouters.delete("/:id", ProjetoController.delete);
-ProjetoRouters.put("/:id", ProjetoController.update);
+ProjetoRouters.post("/", authenticateToken, ProjetoController.create);
+ProjetoRouters.delete("/:id", authenticateToken, ProjetoController.delete);
+ProjetoRouters.put("/:id", authenticateToken, ProjetoController.update);
 
 export default ProjetoRouters;

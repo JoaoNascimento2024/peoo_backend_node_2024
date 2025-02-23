@@ -10,7 +10,6 @@ const ProjetoRepository = {
     },
 
     async createProject(projeto){
-        console.log(projeto);
         const result = await connection.query("insert into projeto (nome, categoria_id) values (?, ?)",
             [projeto.nome, projeto.categoria]
         );
